@@ -30,3 +30,7 @@ function queryOne($sql) {
 function closeConnection() {
     return mysqli_close(getConnection());
 }
+
+function mysqliEscapeString($params) {
+    return mysqli_real_escape_string(getConnection(),$params);
+}
