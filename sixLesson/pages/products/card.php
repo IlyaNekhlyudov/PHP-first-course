@@ -1,12 +1,5 @@
 <?php
 
-require_once __DIR__ . '\..\config\main.php';
-require ENGINE_DIR . "base.php";
-require ENGINE_DIR . "db.php";
-require ENGINE_DIR . "products.php";
-require ENGINE_DIR . "review.php";
-require ENGINE_DIR . "users.php";
-
 $user = getUserBySession();
 if($user) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,7 +7,7 @@ if($user) {
         $text = post('text');
         $productID = get('id');
         addReview($name, $text, $productID);
-        redirect("/product.php?id=" . get('id'));
+        redirect("/products/card?id=" . get('id'));
     }
 
     if (get('id')) {
@@ -37,7 +30,7 @@ if($user) {
         exit();
     }
 } else {
-    redirect('/login.php');
+    redirect('/auth');
 }
 
 ?>

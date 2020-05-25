@@ -1,10 +1,18 @@
 <?php
-function renderMenu(array $menu): string
-{
-    $result = "<ul>";
-    foreach ($menu as $item) {
-        $result .= "<li><a href='#'>{$item}</a></li>";
+
+function render(string $template, array $params = [], $useLayout = true){
+    $content = renderTemplate($template, $params);
+    if($useLayout) {
+        $content = renderTemplate('layout', ['content' => $content]);
     }
-    $result .= "</ul>";
-    return $result;
+    return $content;
 }
+
+function renderTemplate(string $template, array $params = [])
+{
+    ob_start();
+    extract($params);
+    include VIEWS_DIR . "{$template}.php";
+    return ob_get_clean();
+}
+
