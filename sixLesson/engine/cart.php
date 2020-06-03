@@ -25,6 +25,11 @@ function removeFromCart($userID, $productID) {
     return execute("DELETE FROM cart WHERE userHash = '{$userID}' AND productID = '{$productID}'");
 }
 
+function removeAllFromCart($userID) {
+    $userID = mysqliEscapeString($userID);
+    return execute("DELETE FROM cart WHERE userHash = '{$userID}'");
+}
+
 function quantityProducts($userID) {
     $userID = mysqliEscapeString($userID);
     return queryOne("SELECT COUNT(1) FROM cart WHERE userHash='{$userID}'");

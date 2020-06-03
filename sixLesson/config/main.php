@@ -6,3 +6,4 @@ define("VIEWS_DIR", DOCUMENT_ROOT . "views/");
 define("UPLOADS_DIR", DOCUMENT_ROOT . "uploads/");
 define("PUBLIC_DIR", DOCUMENT_ROOT . "public/");
 define("VENDOR_DIR", DOCUMENT_ROOT . "vendor/");
+define("PAGES_DIR", DOCUMENT_ROOT . "pages/");
